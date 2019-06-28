@@ -8,23 +8,29 @@
 
 import UIKit
 
-class WebsiteViewController: UIViewController {
-
-    override func viewDidLoad() {
+class WebsiteViewController: UIViewController
+{
+    var url = ""
+    @IBOutlet weak var gpButton: UIButton!
+    @IBOutlet weak var thButton: UIButton!
+    @IBOutlet weak var ngButton: UIButton!
+    override func  viewDidLoad()
+    {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        gpButton.addTarget(self, action: "greenPeacelink", for: .touchUpInside)
+        thButton.addTarget(self, action: "treeHuglink", for: .touchUpInside)
+        ngButton.addTarget(self, action: "natGeolink", for: .touchUpInside)
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func natGeolink(_ sender: UIButton)
+    {
+        UIApplication.shared.openURL(NSURL(string: "https://www.nationalgeographic.com/environment/")! as URL)
     }
-    */
-
+    @IBAction func treeHuglink(_ sender: UIButton)
+    {
+        UIApplication.shared.openURL(NSURL(string: "https://www.treehugger.com/")! as URL)
+    }
+    @IBAction func greenPeacelink(_ sender: UIButton)
+    {
+        UIApplication.shared.openURL(NSURL(string: "https://www.greenpeace.org/usa/")! as URL)
+    }
 }
